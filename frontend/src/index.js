@@ -6,7 +6,7 @@ import App from './App';
 import axios from 'axios';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
+//erw
 window.axios = axios;
 
 // If you want your app to work offline and load faster, you can change
