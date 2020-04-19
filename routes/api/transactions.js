@@ -11,26 +11,61 @@ router.get('/', (req, res)=>{
 })
 
 
+// router.get('/:id', (req, res)=> {
+//     Transaction.findById(req.params.id)
+//     .then( trans => res.json(trans))
+//     .catch(err=>res.status(400).json(err));
+// })
+
+
 router.get('/:id', (req, res)=> {
-    Transaction.findById(req.params.id)
+    
+    Transaction.find({user: req.params.id}).sort({date: -1})
     .then( trans => res.json(trans))
     .catch(err=>res.status(400).json(err));
 })
 
-router.post('/', passport.authenticate("jwt", {session: false}),
+
+
+router.post('/create', passport.authenticate("jwt", {session: false}),
     (req, res)=>{
         //validate first 
+
+        
 
 
         //
         const newTransaction = new Transaction({
             user: req.user.id,
-            text: req.body.text
+            amount: req.body.amount,
+            text: req.body.item
         });
 
-        newTransaction.save().then(trans=>res.json(trans))
+        newTransaction.save().then(trans=>{
+        const transdata = {
+            id: trans.id,
+            text: trans.text,
+            amount: trans.amount,
+            date: trans.date
+        }    
+            
+            res.json(transdata)
+        })
     }    
 )
+
+
+router.post('/delete/:id', passport.authenticate("jwt", {session: false}),
+    (req, res)=>{
+        //validate first 
+
+        Transaction.findOneAndRemove({ "_id" : req.params.id })
+        .then( trans => res.json(trans))
+        .catch(err=>res.status(400).json(err));
+    }    
+)
+
+
 
 
 module.exports = router;
