@@ -9,15 +9,17 @@ export default function(state = initialState, action) {
     let nextState;
   switch (action.type) {
     case RECEIVE_ALL_TRANSACTIONS:
-        return {
-            ...state,
-            ...action.transactions
-
-        };
+        
+        nextState = {...state};
+        action.transactions.forEach(transaction=>
+            nextState[transaction._id] = transaction
+        )
+        return nextState;
     case RECEIVE_TRANSACTION:
 
         nextState = {...state}
-        nextState[action.transaction.id] = action.transaction
+        
+        nextState[action.transaction._id] = action.transaction
         return nextState;
     case REMOVE_TRANSACTION:
         nextState = Object.assign({}, state);        

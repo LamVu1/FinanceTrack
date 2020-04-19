@@ -3,19 +3,15 @@ import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import {createTransaction, fetchTransactions, deleteTransaction} from '../reducers/transactions/transaction_actions';
 import {Balance} from '../components/balance/balance_component';
+import {Transaction} from '../components/transactions/transaction_component';
+import TransactionForm from '../components/transaction_form/transaction_form_component';
 
+
+import './main_page.css'
 class MainPage extends React.Component {
   constructor(){
-    super();
-    this.state = {
-        item: '',
-        amount: 0
-      };
-    this.income = true;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
+    super();   
+    this.handleRemove = this.handleRemove.bind(this);
 
   }
 
@@ -23,30 +19,29 @@ class MainPage extends React.Component {
     this.props.fetchTransactions(this.props.currentUser)
   }
 
-  handleToggle(){
-    this.income = !this.income
-    console.log(this.income)
-  }
+  // handleToggle(){
+  //   this.income = !this.income
+  //   console.log(this.income)
+  // }
 
-  handleDelete(id){
+  handleRemove(id){
     this.props.deleteTransaction(id)
   }
 
-  handleUpdate(e){
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }
+  // handleUpdate(e){
+  //   const { name, value } = e.target;
+  //   this.setState({ [name]: value });
+  // }
 
 
-  handleSubmit(e){
-     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.createTransaction(user)
-  }
+  // handleSubmit(e){
+  //    e.preventDefault();
+  //   const user = Object.assign({}, this.state);
+  //   this.props.createTransaction(user)
+  // }
  
 
   render() {
-    const {item, amount} = this.state;
     
     const {transactions} = this.props;
     let income = 0;
@@ -55,38 +50,24 @@ class MainPage extends React.Component {
     let trans = transactions.map(transaction =>{
       income += transaction.amount
       return(
-        <li key={transaction._id}>
-          <h1>{transaction.text}</h1>
-          <h3>{transaction.amount}</h3>
-          <button onClick={()=>{this.handleDelete(transaction._id)}}>Delete</button>
-        </li>
+        <Transaction transaction={transaction} remove={this.handleRemove}/>
       )
     })
 
     
 
     return (
-      <div>
+      <div className='main-page-container'>
         <h1>MAIN PAGE</h1>
         <div>
           <Balance  income={income}/>
         </div>
-        <ul>
-        {
-          trans
-        }
-        </ul>
-        <form action="">
-            <h1>Add new transaction</h1>
-            <label htmlFor="">Item
-            <input type="text" name='item' placeholder='Enter Item' value={item} onChange={this.handleUpdate}/>
-            </label>
-            <button onClick={this.handleToggle}>Toggle</button>
-            <label htmlFor="">Amount
-            <input type="text" name='amount' placeholder='Enter Amount' value={amount} onChange={this.handleUpdate}/>
-            </label>
-            <button onClick={this.handleSubmit}>Submit</button>      
-        </form>
+        <div className='transactions-container'>
+          {
+            trans
+          }
+        </div>
+        <TransactionForm />
       </div>
     );
   }
@@ -110,10 +91,6 @@ const mapStateToProps = (state) => {
   
  
  
-  
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MainPage);
+export default connect(mapStateToProps,mapDispatchToProps)(MainPage);
 
 

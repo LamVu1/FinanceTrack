@@ -40,6 +40,7 @@ export const fetchTransactions = (userData)=>dispatch=>{
 }
 
 export const deleteTransaction = (id)=>dispatch => {
+    
     return(
         APIUtil.deleteTransaction(id).then(transaction =>
             dispatch(removeTransaction(transaction.data))

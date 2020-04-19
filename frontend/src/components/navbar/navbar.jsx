@@ -2,8 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { logout } from '../reducers/session/session_actions';
-
+import { logout } from '../../reducers/session/session_actions';
+import './navbar.css'
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +21,7 @@ class NavBar extends React.Component {
       if (this.props.loggedIn) {
         return (
             <div>
-                <button onClick={this.logoutUser}>Logout</button>
+                <button className='logout-btn' onClick={this.logoutUser}>Logout</button>
             </div>
         );
       } else {
@@ -37,7 +37,7 @@ class NavBar extends React.Component {
   render() {
       return (
         <div>
-            <h1>Chirper</h1>
+            <h1>FinanceTracker</h1>
             { this.getLinks() }
         </div>
       );

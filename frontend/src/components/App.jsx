@@ -5,7 +5,7 @@ import { Switch, Redirect } from 'react-router-dom';
 import LandingPage from '../pages/landing_page';
 import MainPage from '../pages/main_page';
 
-import NavBar from './navbar';
+import NavBar from '../components/navbar/navbar';
 
 const App = () => (
     <div>

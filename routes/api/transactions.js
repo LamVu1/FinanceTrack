@@ -43,7 +43,7 @@ router.post('/create', passport.authenticate("jwt", {session: false}),
 
         newTransaction.save().then(trans=>{
         const transdata = {
-            id: trans.id,
+            _id: trans.id,
             text: trans.text,
             amount: trans.amount,
             date: trans.date
