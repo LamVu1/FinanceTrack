@@ -62,14 +62,10 @@ class TransactionForm extends React.Component{
                         Income
                     </button>
                     <div className='form-item'>
-                        <label className='item-label' htmlFor="">Item
-                            <input className='item-input' type="text" name='item'  value={item} onChange={this.handleUpdate}/>
-                        </label>
-
-
-                        <label htmlFor="" className='item-label' >Amount
-                            <input className='item-input' type="text" name='amount' placeholder='Enter Amount' value={amount} onChange={this.handleUpdate}/>
-                        </label>
+                        <label className='item-label' htmlFor="">Item</label>
+                            <input className='item-input' type="text" name='item' maxLength={30} value={item} onChange={this.handleUpdate}/>
+                        <label htmlFor="" className='item-label' >Amount</label>
+                            <input className='item-input' type="number" name='amount' placeholder='Enter Amount' value={amount} onChange={this.handleUpdate}/>
                     </div>
                     <button className='transaction-form-submit-btn' onClick={this.handleSubmit}>
                         Add transaction

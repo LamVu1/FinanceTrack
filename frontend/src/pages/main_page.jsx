@@ -5,6 +5,7 @@ import {createTransaction, fetchTransactions, deleteTransaction} from '../reduce
 import {Balance} from '../components/balance/balance_component';
 import {Transaction} from '../components/transactions/transaction_component';
 import TransactionForm from '../components/transaction_form/transaction_form_component';
+import {IncomeExpense} from '../components/income_expense/income_expense_component';
 
 
 import './main_page.css'
@@ -44,11 +45,18 @@ class MainPage extends React.Component {
   render() {
     
     const {transactions} = this.props;
-    let income = 0;
+    // let balance = 0;
     // let expense = 0;
+    let income = 0;
+    let expense = 0;
 
     let trans = transactions.map(transaction =>{
-      income += transaction.amount
+      if(transaction.amount >0){
+        income+=transaction.amount
+      }
+      else if(transaction.amount < 0){
+        expense+=transaction.amount
+      }
       return(
         <Transaction transaction={transaction} remove={this.handleRemove}/>
       )
@@ -58,10 +66,8 @@ class MainPage extends React.Component {
 
     return (
       <div className='main-page-container'>
-        <h1>MAIN PAGE</h1>
-        <div>
-          <Balance  income={income}/>
-        </div>
+          <Balance  income={income} expense={expense}/>
+          <IncomeExpense income={income} expense={expense}/>
         <div className='transactions-container'>
           {
             trans

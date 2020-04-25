@@ -1,0 +1,47 @@
+.income-expense-container{
+   
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 25%;
+    background: white;
+    margin-bottom: 30px;
+    box-shadow: 5px 5px 1px 1px #d0cfcf;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.income-container{
+    
+    width: 50%;
+    border-right: rgb(204, 204, 204) solid thin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.expense-container{
+    
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.income-expense-header{
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 400;
+}
+.income-amt{
+    margin: 0;
+    color: rgb(30, 228, 30);
+}
+
+
+.expense-amt{
+    margin: 0;
+    color: #d01c1c;
+}

@@ -11,12 +11,14 @@ export const Transaction =({transaction, remove})=>{
         sign='+'
     }
     return(
-        <div key={transaction._id} className={'transaction-item' + (sign==='-' ?'-minus' :'-plus')}>
+        <div key={transaction._id} className='transaction-item'>
             <button className='transaction-del-btn' onClick={()=>{
               remove(transaction._id)
             }}>X</button>
-            <h1>{transaction.text}</h1>
-            <h3>{sign}${Math.abs(transaction.amount)}</h3>
+                <div  key={transaction._id} className={(sign==='-' ?'t-minus' :'t-plus')}>
+                <div className='transaction-text'>{transaction.text}</div>
+                <div className='transaction-amount'>{sign}${Math.abs(transaction.amount).toFixed(2)}</div>
+            </div>
         </div>
     )
 }

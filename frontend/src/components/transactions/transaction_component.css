@@ -1,26 +1,95 @@
-
-
-.transaction-del-btn{
-    width: 100px;
-    height: 50px;
-    align-self: center;
-}
-
-.transaction-item-minus{
+.transaction-item{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-content: center;
-    border: red solid;
-    border-bottom: rgb(211, 208, 208) solid;
+    height: 60px;
+    margin-bottom: 10px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+
+.transaction-del-btn{
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    align-self: center;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    left: 5px;
+    opacity: 0; 
+    transition: opacity 0.2s ease;
+}
+
+.transaction-text{
+    width: 50%;
+    height: 100%;
+    overflow-wrap: break-word;
+}
+
+.transaction-amount{
+    font-weight: 100;
+}
+
+
+.transaction-item:hover .transaction-del-btn{
+    opacity: 1;
+}
+
+
+.t-minus{
+    display: flex;
+    flex-direction: row;
+    JUSTIFY-CONTENT: SPACE-AROUND;
+    width: 100%;
+    border: rgb(211, 208, 208) solid thin;
+    border-right:#d01c1c  solid thick;
+    background-color: white;
+    box-shadow: 14px 3px 11px 0px grey;
+    align-items: center;
+    font-size: 24px;
+    padding-left: 50px;
+    font-weight: bolder;
+
+} 
+
+
+.t-plus{
+    display: flex;
+    flex-direction: row;
+    JUSTIFY-CONTENT: SPACE-AROUND;
+    width: 100%;
+    border: rgb(211, 208, 208) solid thin;
+    border-right: rgb(30, 228, 30) solid thick;
+    background-color: white;
+    box-shadow: 14px 3px 11px 0px grey;
+    align-items: center;
+    padding-left: 50px;
+    font-size: 24px;
+    font-weight: bolder;
+
 
 }
+
+
+
+/* 
+.transaction-item-minus:hover .transaction-del-btn{
+opacity: 1;
+}
+
+.transaction-item-plus:hover .transaction-del-btn{
+    opacity: 1;
+    }
 
 .transaction-item-plus{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-content: center;
-    border: green solid;
+    border-right: green solid thick;
     border-bottom: rgb(211, 208, 208) solid;
-}
+
+} */
