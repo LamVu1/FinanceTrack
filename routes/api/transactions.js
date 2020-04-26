@@ -5,7 +5,7 @@ const Transaction = require('../../models/Transaction');
 
 router.get('/', (req, res)=>{
     Transaction.find()
-        .sort({date: -1})
+        .sort({date: 1})
         .then(trans => res.json(trans))
         .catch(err=>res.status(400).json(err));
 })
@@ -30,16 +30,22 @@ router.get('/:id', (req, res)=> {
 router.post('/create', passport.authenticate("jwt", {session: false}),
     (req, res)=>{
         //validate first 
-
+        let newTransaction;
+        if(req.body.date){
+            newTransaction = new Transaction({
+                user: req.user.id,
+                amount: req.body.amount,
+                text: req.body.item,
+                date: req.body.date
+            });
+        }else{
+            newTransaction = new Transaction({
+                user: req.user.id,
+                amount: req.body.amount,
+                text: req.body.item
+            });
+        }
         
-
-
-        //
-        const newTransaction = new Transaction({
-            user: req.user.id,
-            amount: req.body.amount,
-            text: req.body.item
-        });
 
         newTransaction.save().then(trans=>{
         const transdata = {
