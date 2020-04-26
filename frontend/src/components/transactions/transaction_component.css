@@ -27,11 +27,13 @@
     width: 50%;
     height: 100%;
     overflow-wrap: break-word;
-}
-
-.transaction-amount{
+    display: flex;
+    align-items: center;
     font-weight: 100;
 }
+/* 
+.transaction-amount{
+} */
 
 
 .transaction-item:hover .transaction-del-btn{
@@ -42,7 +44,7 @@
 .t-minus{
     display: flex;
     flex-direction: row;
-    JUSTIFY-CONTENT: SPACE-AROUND;
+    justify-content: space-between;
     width: 100%;
     border: rgb(211, 208, 208) solid thin;
     border-right:#d01c1c  solid thick;
@@ -50,8 +52,9 @@
     box-shadow: 14px 3px 11px 0px grey;
     align-items: center;
     font-size: 24px;
-    padding-left: 50px;
+    padding: 0px 50px;
     font-weight: bolder;
+    margin-left: 60px;
 
 } 
 
@@ -59,18 +62,24 @@
 .t-plus{
     display: flex;
     flex-direction: row;
-    JUSTIFY-CONTENT: SPACE-AROUND;
+    justify-content: space-between;
     width: 100%;
     border: rgb(211, 208, 208) solid thin;
     border-right: rgb(30, 228, 30) solid thick;
     background-color: white;
     box-shadow: 14px 3px 11px 0px grey;
     align-items: center;
-    padding-left: 50px;
+    padding: 0px 50px;
     font-size: 24px;
+    margin-left: 60px;
     font-weight: bolder;
 
 
+}
+
+.transaction-date{
+    font-weight: 100;
+    margin-right: 50px;
 }
 
 

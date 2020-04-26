@@ -1,5 +1,5 @@
 .transaction-form-container{
-    width: 25%;
+    width: 35%;
 }
 
 .transaction-form{
@@ -46,4 +46,42 @@
     background-color: rgb(137, 108, 204);
     margin: 20px 0px;
     box-sizing: border-box;
+}
+
+.form-toggle{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.toggle-income{
+    background-color: rgb(196, 193, 193);
+    border-radius: 0px; 
+    padding: 10px 12px;
+    margin: 0;
+    border: transparent solid;
+
+    box-sizing: border-box;
+
+}
+.toggle-income:hover{
+    border: rgb(137, 108, 204) solid;
+}
+
+.toggle-spending{
+    background-color: rgb(196, 193, 193);
+    border-radius: 0px; 
+    padding: 10px 12px;
+    margin: 0;
+    border: transparent solid;
+
+    box-sizing: border-box;
+}
+
+.toggle-spending:hover{
+    border: rgb(137, 108, 204) solid;
+}
+
+.selected{
+    background-color:rgb(137, 108, 204);;
 }
