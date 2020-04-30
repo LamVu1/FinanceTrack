@@ -7,7 +7,7 @@ import {Transaction} from '../components/transactions/transaction_component';
 import TransactionForm from '../components/transaction_form/transaction_form_component';
 import {IncomeExpense} from '../components/income_expense/income_expense_component';
 import {LineGraph} from '../components/linegraph/line_graph_component';
-import {BarGraph} from '../components/bargraph/bar_graph_component';
+import BarGraph from '../components/bargraph/bar_graph_component';
 
 
 import './main_page.css'
