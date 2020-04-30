@@ -1,21 +1,27 @@
 import rd3 from 'react-d3-library';
 import * as d3 from 'd3';
+import { connect } from 'react-redux';
 
 import React, {useRef, useEffect, useState} from 'react';
 import "./bar_graph_component.css"
 
-// const RD3Component = rd3.Component;
+import { useSelector } from 'react-redux'
+import {transactionSelector} from './transaction_selectors';
 
 
-export const BarGraph =()=>{
-    const [data, setData] = useState([25,30,45,60,28,75])
+
+    const BarGraph =()=>{
+        let test = useSelector(transactionSelector)
+        // console.log(test)
+        // const test = this.props.test;
+    const [data, setData] = useState(test)
     const svgRef = useRef();
     useEffect(()=>{
         const svg = d3.select(svgRef.current);
 
         const xScale = d3.scaleBand()
                         .domain(data.map((val, index)=>index))
-                        .range([0,300])
+                        .range([0,800])
                         .padding(0.5)
 
         const xAxis = d3.axisBottom(xScale).ticks(data.length)
@@ -78,3 +84,4 @@ export const BarGraph =()=>{
   };
 
 
+export default connect(null, null)(BarGraph);
