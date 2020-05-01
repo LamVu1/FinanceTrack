@@ -74,14 +74,14 @@ import {transactionSelector} from './transaction_selectors';
                 <g className="x-axis"/>
                 <g className="y-axis"/>
             </svg>
-            <br/>
-            <button onClick={()=>setData(data.map(value=>value+5))}>Update Date</button>
-            <button onClick={()=>setData(data.filter(value=>value<35))}>Filter Date</button>
             </div>
         </React.Fragment>
       )
-    
-  };
+      
+    };
+    // <br/>
+    // <button onClick={()=>setData(data.map(value=>value+5))}>Update Date</button>
+    // <button onClick={()=>setData(data.filter(value=>value<35))}>Filter Date</button>
 
 
 export default connect(null, null)(BarGraph);

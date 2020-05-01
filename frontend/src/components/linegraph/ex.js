@@ -97,3 +97,79 @@ import {
       });
       render(data);
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    bar.append("rect")
+    .attr("width", barWidth)
+    .attr("height", function(v) {
+      return actualHeight - yAxisScale(v[1]);
+    })
+    .attr("y", function(v) {
+      return yAxisScale(v[1]);
+    })
+    .on("mouseover", function(d) {
+      d3.select(this)
+        .style("fill", "yellow");
+
+      // chart.append("text")
+      // .attr("x", actualWidth/ 2)
+      // .attr("y", actualHeight / 2)
+      // .attr("dy", ".35em")
+
+      tooltip.style("opacity", 1)
+        .attr("x", actualWidth / 2)
+        .attr("y", actualHeight / 2)
+        .attr("dy", ".71em")
+      var months = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+      var dt = new Date(d[0]);
+      var dateVal = dt.getDate(); // don't really need this
+      var monthVal = dt.getMonth();
+      var yearVal = dt.getFullYear();
+      var formattedDate = months[monthVal] +
+        "-" + yearVal;
+      tooltip.html("Date: " + formattedDate + ", GDP: $" + d[1] + " Billion");
+    })
+    .on("mouseout", function(d, i) {
+      var oldFill = i % 2 ? "#e14588" : "#ef81ed";
+      d3.select(this)
+        .style("fill", oldFill);
+      tooltip.style("opacity", 0);
+    });
+  var tooltip = d3.select("#graph")
+    .append("div")
+    .attr("class", 'tooltip')
+    .style("z-index", "10")
+    .style("opacity", 0)
+    .text("a simple tooltip");
+
+  chart.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + actualHeight + ")")
+    .call(xAxis);
+
+  chart.append("g")
+    .call(yAxis)
+
+  chart.append("g")
+    .append("text")
+    .attr("y", totalHeight - margin.bottom)
+    .attr("dy", ".71em")
+    .style("font-size", "10px")
+    .text("Years");
