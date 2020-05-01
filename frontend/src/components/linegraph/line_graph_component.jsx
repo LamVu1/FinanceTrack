@@ -13,6 +13,7 @@ export const LineGraph =()=>{
     
     let min = 0;
     let runningBalance3 = 0;
+    let runningBalance4 = 0;
 
     data.sort((a,b)=>new Date(a.date) - new Date(b.date))
 
@@ -32,24 +33,18 @@ export const LineGraph =()=>{
     var width = 800 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
     
-    // var svg = d3.select(element[0])
-    //             .append('svg')
-    //             
-    // var x = d3.scale.linear()
-    //     .range([0, width]);
-    
-    // var y = d3.scale.linear()
-    //     .range([height, 0]);
     
 
     // const svgRef = useRef();
     // useEffect(()=>{
         // console.log(data)
-        const svg = d3.select('svg').attr('width', width+margin.left+margin.right)
-                    .attr('height', height+margin.top+margin.bottom);
-                    svg.append('g')
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         
+        const svg = d3.select('svg').attr('width', width+margin.left+margin.right)
+        .attr('height', height+margin.top+margin.bottom);
+        svg.append('g')
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        
+        svg.selectAll("*").remove();
 
         const xValue = d =>{ 
             return(
@@ -74,10 +69,7 @@ export const LineGraph =()=>{
                         .domain(d3.extent(data, function(d){return d.date}))
                         .range([60,width])
 
-                // svg.append("g").attr("transform", "translate(0,"+'500px'+")").call(d3.axisBottom(xScale));
-
         const xAxis = d3.axisBottom(xScale)
-        // .ticks(data.length).tickFormat(index=>index+1)
        
         
         
@@ -89,16 +81,21 @@ export const LineGraph =()=>{
         .range([height-20,20]);
         
 
-        // console.log(yScale(0))
+        svg.append("g").style("transform","translate(0px,"+  yScale(0)+ 'px)').call(xAxis)
 
 
-        svg.select(".x-axis").style("transform","translate(0px,"+  yScale(0)+ 'px)').call(xAxis);
+        // svg.select(".x-axis").style("transform","translate(0px,"+  yScale(0)+ 'px)').call(xAxis);
 
         
 
         const yAxis = d3.axisLeft(yScale);
 
-        svg.select(".y-axis").text('Amount').style("transform","translate(60px,0px)").call(yAxis);
+
+
+        svg.append("g").style("transform","translate(60px,0px)").call(yAxis)
+
+
+        // svg.select(".y-axis").text('Amount').style("transform","translate(60px,0px)").call(yAxis);
      
         svg.append("g")
         .append("text")
@@ -117,8 +114,7 @@ export const LineGraph =()=>{
         .style("font-size", "10px")
         .text("Balance");
 
-        // .attr("y", height/2)
-        // .attr("x", width/2)
+  
 
         svg.append("g")
         .append("text")
@@ -126,8 +122,74 @@ export const LineGraph =()=>{
         .style("font-size", "10px")
         .attr( "transform", "translate(20,300) rotate(-90)")
         .text("Balance Amount in Dollars");
+//         const Tooltip = d3.select(".line-graph-container").append("span")
 
-        //Line
+        // const Tooltip = d3.select(".line-graph-container").append("span")
+        // .style("opacity", 0)
+        // .attr("class", "tooltip")
+        // .style("background-color", "white")
+        // .style("border", "solid")
+
+        const Tooltip = d3.select("body")
+                    .append("div")
+                    .style("position", "absolute")
+                    .attr("class", "tooltip")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden")
+                    // .text("a simple tooltip");
+       
+        let mouseover = function(d) {
+            Tooltip
+              .style("visibility", "visible")
+          }
+       
+        let mousemove = function(d) {
+          
+            Tooltip
+              .html("Date: " + d.date.toLocaleDateString('en-US', {month: '2-digit', day:'2-digit', year:'2-digit'}) + "<br />" +"Balance Amount: $" + d.amount)
+              .style("right",width - d3.mouse(this)[0] -30 + "px")
+              .style("bottom", height - d3.mouse(this)[1] +200+ "px")
+            }
+            
+        let mouseleave = function(d) {
+            Tooltip
+              .style("visibility", "hidden")
+          }
+
+
+
+
+        function make_x_gridlines() {		
+            return d3.axisBottom(xScale)
+                .ticks(5)
+        }
+        
+        // gridlines in y axis function
+        function make_y_gridlines() {		
+            return d3.axisLeft(yScale)
+                .ticks(5)
+        }
+          
+
+        svg.append("g")			
+            .attr("class", "grid")
+            .attr("transform", "translate(0," + height + ")")
+            .call(make_x_gridlines()
+            .tickSize(-height)
+            .tickFormat("")
+        )
+
+        // add the Y gridlines
+        svg.append("g")			
+            .attr("class", "grid")
+            .call(make_y_gridlines()
+            .tickSize(-width)
+            .tickFormat("")
+        )
+
+
+
+        // //Line
         const myLine = d3.line()
                 .x(data=> 
                     xScale(xValue(data)))
@@ -142,6 +204,35 @@ export const LineGraph =()=>{
             .attr("d", myLine(data))
             .attr("fill","none")
             .attr("stroke", "#896ccc")
+
+
+            const tValue = d =>{
+
+                return(
+                    runningBalance4+= d.amount
+    
+                )
+            }    
+
+
+        svg
+        .append("g")
+        .selectAll("dot")
+        .data(data)
+        .enter().append("circle")								
+        .attr("class", "myCircle")
+            .attr("cx", function(data) { return  xScale(xValue(data)) } )
+            .attr("cy", function(data) { return yScale(tValue(data)) } )
+            .attr("r", 5)
+            .attr("stroke", "#69b3a2")
+            .attr("stroke-width", 3)
+            .attr("fill", "white")    
+            .on("mouseover", mouseover)
+            .on("mousemove", mousemove)
+            .on("mouseleave", mouseleave)
+
+
+
     // }, [data]);
 
 
@@ -154,17 +245,13 @@ export const LineGraph =()=>{
       return (
         <React.Fragment>
             <div className='line-graph-container'>
-            <svg className="graph" >
-                <g className="x-axis"/>
-                <g className="y-axis"/>
-            </svg>
+            <svg className="graph" />
             <br/>
             </div>
         </React.Fragment>
       )
       
     };
-    // <button onClick={()=>setData(data.map(value=>value+5))}>Update Date</button>
-    // <button onClick={()=>setData(data.filter(value=>value<35))}>Filter Date</button>
-
-
+    
+    // <g className="x-axis"/>
+    // <g className="y-axis"/>
