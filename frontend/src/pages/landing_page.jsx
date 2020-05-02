@@ -39,7 +39,7 @@ class LandingPage extends React.Component {
 </div>
 
     return (
-      <div>
+      <div className='landing-page'>
         <div className='form-div'>
           <SignIn />
           <SignUp/>

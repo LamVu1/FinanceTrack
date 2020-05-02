@@ -4,9 +4,18 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    color: white;
+    background-color: rgb(137, 108, 204);
 }
 
 
 .logout-btn{
     width: 100px;
+    border-radius: 0pt;
+    margin: 0;
+}
+
+.logout-btn:hover{
+background-color: rgb(38, 152, 197);
 }
