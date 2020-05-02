@@ -17,6 +17,8 @@ class SignIn extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
+
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
@@ -34,6 +36,16 @@ class SignIn extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  handleDemo(e){
+    e.preventDefault();
+    let user = {
+      username: 'test1',
+      password: '123456'
+    };
+    this.props.login(user); 
+
   }
 
   // Handle form submission
@@ -66,7 +78,7 @@ class SignIn extends React.Component {
       <div className='sign-in'>
         <h1>Sign In</h1>
         <form onSubmit={this.handleSubmit} className='sign-in-form'>
-          <div>
+       
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
@@ -80,9 +92,12 @@ class SignIn extends React.Component {
               />
             <br/>
             <input type="submit" value="Submit" />
+          <button className='demo-login' onClick={this.handleDemo}>Demo Log In</button>
             {this.renderErrors()}
-          </div>
+          
         </form>
+        <div>
+        </div>
       </div>
     );
   }

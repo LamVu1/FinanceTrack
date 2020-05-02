@@ -18,8 +18,10 @@
 .right-container{
     width: 50%;
     display: flex;
+    /* height: 100%; */
+    align-self: flex-start;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
     margin-left: 50px;
 }
 
@@ -38,3 +40,23 @@ margin: 0;
         
 }
 
+
+
+@media only screen and (max-width: 1400px) {
+ 
+    .main-page-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .right-container{
+        width: 100%;
+        margin-left: 0px;
+
+    }
+  
+    .left-container{
+        width: 100%;
+    }
+
+}

@@ -2,12 +2,12 @@
     background-color: white;
     height: 100%;
     width: 100%;
-    box-shadow: 5px 5px 1px 1px #d0cfcf;
+    /* box-shadow: 5px 5px 1px 1px #d0cfcf; */
 
 }
 
 .tooltip{
-    position: relative;
+    position: absolute;
     text-align: center;
     /* z-index: 10;			 */
     width: 120px;					
@@ -24,10 +24,13 @@
 }
 
 .line-graph-container{
-    width: 800px;
-    height: 650px;
+    width: 700px;
+    height: 600px;
     display: flex;
     flex-direction: column;
+    border: #d0cfcf solid;
+        box-shadow: 5px 5px 1px 1px #d0cfcf;
+
     
 }
 
@@ -38,3 +41,6 @@
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
 }
+
+
+
