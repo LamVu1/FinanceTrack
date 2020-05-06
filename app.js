@@ -5,8 +5,18 @@ const bodyParser = require('body-parser');
 const db = require('./config/keys').mongoURI;
 const users = require('./routes/api/users');
 const transactions = require('./routes/api/transactions');
-
+const path = require('path');
 const passport = require('passport');
+
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    })
+  }
+
+
 
 //app to respond to json request and other software
 app.use(bodyParser.urlencoded({ extended: false }));
