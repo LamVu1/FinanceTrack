@@ -2,6 +2,7 @@ import React from 'react';
 import SignIn from '../components/signin/sign_in_component';
 import SignUp from '../components/signup/sign_up_component';
 import '../components/signinup.css'
+import './landing_page.css'
 
 class LandingPage extends React.Component {
   constructor(){
@@ -40,6 +41,9 @@ class LandingPage extends React.Component {
 
     return (
       <div className='landing-page'>
+        <div className='landing-page-image-container'>
+          <img className='landing-page-image' src="https://app-ecommerce-seeds.s3-us-west-1.amazonaws.com/pngwing.com.png" alt=""/>
+        </div>
         <div className='form-div'>
           <SignIn />
           <SignUp/>

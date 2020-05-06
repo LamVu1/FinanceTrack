@@ -40,12 +40,43 @@
     box-sizing: border-box;
 }
 
+.item-input-date{
+    height: 30px;
+    width: 200px;
+    padding: 2px 5px;
+    margin-bottom: 15px;
+    border-radius: 2pt;
+    border: rgb(212, 212, 212) solid thin;
+    box-sizing: border-box;
+    text-align: center;
+    align-self: flex-start;
+}
+
 .transaction-form-submit-btn{
-    width: 100%;
     align-self: center;
-    background-color: rgb(137, 108, 204);
     margin: 20px 0px;
     box-sizing: border-box;
+
+
+
+    width: 100%;
+    border-radius: 4pt;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: none;
+    padding: 10px 12px;
+    color: white;
+    background-color: rgb(137, 108, 204);
+    border: rgba(255, 255, 255, 0.479) solid;
+    cursor: pointer;
+    text-align: center;
+}
+
+.transaction-form-submit-btn:hover{
+    background-color: rgb(97, 39, 233);
+
 }
 
 .form-toggle{
@@ -55,13 +86,21 @@
 }
 
 .toggle-income{
-    background-color: rgb(196, 193, 193);
     border-radius: 0px; 
+    width: 50%;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: none;
     padding: 10px 12px;
-    margin: 0;
+    margin: 0px;
+    color: white;
+    background-color: rgb(196, 193, 193);
     border: transparent solid;
 
-    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
 
 }
 .toggle-income:hover{
@@ -69,13 +108,23 @@
 }
 
 .toggle-spending{
-    background-color: rgb(196, 193, 193);
+ 
     border-radius: 0px; 
+    width: 50%;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: none;
     padding: 10px 12px;
-    margin: 0;
+    margin: 0px;
+    color: white;
+    background-color: rgb(196, 193, 193);
     border: transparent solid;
 
-    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+
 }
 
 .toggle-spending:hover{
@@ -85,3 +134,8 @@
 .selected{
     background-color:rgb(137, 108, 204);;
 }
+
+
+
+
+

@@ -87,7 +87,7 @@ class TransactionForm extends React.Component{
                    </div>
                     <div className='form-item'>
                         <label className='item-label'>Date (If obmitted will default to current date)</label>
-                        <input className='item-input' type="date" name="" id="" value={date} title='Default current date' onChange={this.handleDate}/>
+                        <input className='item-input-date' type="date" name="" id="" value={date} title='Default current date' onChange={this.handleDate}/>
                         <label className='item-label' htmlFor="">Item</label>
                             <input className='item-input' type="text" name='item' maxLength={30} value={item} onChange={this.handleUpdate}/>
                         <label htmlFor="" className='item-label' >Amount</label>

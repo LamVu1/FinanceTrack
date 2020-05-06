@@ -3,7 +3,7 @@
     width: 30vw;
     background-color: rgba(255, 255, 255, 0.637);
     border-radius: 2pt;
-    margin: auto;
+    /* margin: auto; */
  
 }
 
@@ -71,25 +71,7 @@
             background-color: rgb(200, 235, 241);
     }
 
-    .sign-in-form button{
-        display: block;
-    width: 80%;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: #2188b8;
-    border-radius: 4px;
-    border: none;
-    padding: 10px 12px;
-    margin: 0 8px 10px 0;
-    color: #fff;
-    cursor: pointer;
-    text-align: center;
-    }
-    .sign-in-form button:hover{
-        background-color: #36b3ec;
-    }
-    
+ 
 
     .demo-login-btn{
         background: rgb(22, 180, 22);
@@ -136,7 +118,7 @@
 
     } */
 
-button{
+/* button{
     display: block;
 width: 80%;
 -webkit-box-sizing: border-box;
@@ -151,4 +133,62 @@ color: #fff;
 cursor: pointer;
 text-align: center;
 
+} */
+.signup-btn{
+    background-color: black;
+    display: block;
+    width: 80%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-radius: 4px;
+    border: none;
+    padding: 10px 12px;
+    margin: 0px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.signup-btn:hover{
+    background-color: rgb(93, 93, 93);
+}
+
+.login-in-btn{
+    background-color: black;
+    display: block;
+    width: 80%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-radius: 4px;
+    border: none;
+    padding: 10px 12px;
+    margin: 0px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.login-in-btn:hover{
+    background-color: rgb(93, 93, 93);
+}
+
+.demo-login{
+    display: block;
+width: 80%;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+background: #07d355;
+border-radius: 4px;
+border: none;
+padding: 10px 12px; 
+margin-top: 10px;
+color: #fff;
+cursor: pointer;
+text-align: center;
+}
+.demo-login:hover{
+    background-color: #04f862;
 }
