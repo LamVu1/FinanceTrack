@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import './transaction_component.css';
 
 export const Transaction =({transaction, remove})=>{

@@ -1,6 +1,6 @@
 // src/components/nav/navbar_container.js
 import React from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { logout } from '../../reducers/session/session_actions';
 import './navbar.css'

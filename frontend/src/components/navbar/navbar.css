@@ -6,16 +6,30 @@
     align-items: center;
     padding: 10px 20px;
     color: white;
-    background-color: rgb(137, 108, 204);
+    background-color: rgb(37, 9, 101);;
+    
 }
 
 
 .logout-btn{
     width: 100px;
-    border-radius: 0pt;
-    margin: 0;
+    border-radius: 4pt;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: none;
+    padding: 10px 12px;
+    margin: 0px;
+    color: white;
+    background-color: black;
+    border: rgba(255, 255, 255, 0.479) solid;
+    cursor: pointer;
+    text-align: center;
 }
 
 .logout-btn:hover{
-background-color: rgb(38, 152, 197);
+    background-color: rgb(93, 93, 93);
 }
+
+

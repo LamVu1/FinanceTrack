@@ -77,7 +77,7 @@ class SignIn extends React.Component {
     return (
       <div className='sign-in'>
         <h1>Sign In</h1>
-        <form onSubmit={this.handleSubmit} className='sign-in-form'>
+        <form  className='sign-in-form'>
        
               <input type="text"
                 value={this.state.username}
@@ -91,7 +91,7 @@ class SignIn extends React.Component {
                 placeholder="Password"
               />
             <br/>
-            <input type="submit" value="Submit" />
+          <button className='login-in-btn' onClick={this.handleSubmit} >Submit</button>
           <button className='demo-login' onClick={this.handleDemo}>Demo Log In</button>
             {this.renderErrors()}
           
