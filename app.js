@@ -1,12 +1,21 @@
 const express = require('express');
+const path = require('path');
 const app = express();
+const db = require('./config/keys').mongoURI;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const db = require('./config/keys').mongoURI;
+const passport = require('passport');
+
+
 const users = require('./routes/api/users');
 const transactions = require('./routes/api/transactions');
-const path = require('path');
-const passport = require('passport');
+
+
+
+mongoose
+    .connect(db, { useNewUrlParser: true})
+    .then(()=>{console.log("Connected to mongoDB")})
+    .catch(err => console.log(err))
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -17,20 +26,16 @@ if (process.env.NODE_ENV === 'production') {
   }
 
 
+  app.use(passport.initialize());
+  require('./config/passport')(passport);
 
 //app to respond to json request and other software
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.use(passport.initialize());
-require('./config/passport')(passport);
 
 
-mongoose
-    .connect(db, { useNewUrlParser: true})
-    .then(()=>{console.log("Connected to mongoDB")})
-    .catch(err => console.log(err))
 
 
 
