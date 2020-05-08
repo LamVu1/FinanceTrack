@@ -8,13 +8,19 @@ import TransactionForm from '../components/transaction_form/transaction_form_com
 import {IncomeExpense} from '../components/income_expense/income_expense_component';
 import {LineGraph} from '../components/linegraph/line_graph_component';
 // import {BarGraph} from '../components/bargraph/bar_graph_component';
-
+import Filters from '../components/filters/filter_component';
+import SearchBox from '../components/search/search_component';
 
 import './main_page.css'
 class MainPage extends React.Component {
   constructor(){
     super();   
+    this.state = {
+      search: ''
+    }
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+
 
   }
 
@@ -22,33 +28,25 @@ class MainPage extends React.Component {
     this.props.fetchTransactions(this.props.currentUser)
   }
 
-  // handleToggle(){
-  //   this.income = !this.income
-  //   console.log(this.income)
-  // }
-
   handleRemove(id){
     this.props.deleteTransaction(id)
   }
 
-  // handleUpdate(e){
-  //   const { name, value } = e.target;
-  //   this.setState({ [name]: value });
-  // }
+  handleSearch(e){
+    e.preventDefault();
+    this.setState({search: e.target.value}) 
+}
 
 
-  // handleSubmit(e){
-  //    e.preventDefault();
-  //   const user = Object.assign({}, this.state);
-  //   this.props.createTransaction(user)
-  // }
- 
 
   render() {
     
     const {transactions} = this.props;
-    // let balance = 0;
-    // let expense = 0;
+
+
+
+    // let transactions = this.props.transactions.filter((ele)=> ele.text.toLowerCase().includes(this.state.search.toLowerCase()))
+
     let income = 0;
     let expense = 0;
 
@@ -63,7 +61,12 @@ class MainPage extends React.Component {
         <Transaction transaction={transaction} remove={this.handleRemove}/>
       )
     })
-
+//     <div className='search-div'>
+//     <form className='search-form'>
+//         <input onChange={this.handleSearch} type="text" name="" value={this.state.search} placeholder='Search'/>
+      
+//     </form>
+// </div>
     
 
     return (
@@ -71,6 +74,11 @@ class MainPage extends React.Component {
         <div className="left-container">
           <Balance  income={income} expense={expense}/>
           <IncomeExpense income={income} expense={expense}/>
+          <div className='search-filter'>
+    <SearchBox />
+         
+          <Filters />
+          </div>
         <div className='transactions-container'>
           {
             trans

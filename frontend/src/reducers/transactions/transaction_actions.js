@@ -5,6 +5,7 @@ import * as APIUtil from './transactions_api_util';
 export const RECEIVE_ALL_TRANSACTIONS = "RECEIVE_ALL_TRANSACTIONS";
 export const RECEIVE_TRANSACTION = "RECEIVE_TRANSACTION";
 export const REMOVE_TRANSACTION = "REMOVE_TRANSACTION";
+export const RECEIVE_SEARCH_TRANSACTIONS = "RECEIVE_SEARCH_TRANSACTIONS";
 
 
 // We'll dispatch this when our user signs in
@@ -23,6 +24,14 @@ export const removeTransaction = transaction => ({
     transaction
 });
 
+export const receiveSearchTransactions = search => ({
+    type: RECEIVE_SEARCH_TRANSACTIONS,
+    search: search
+});
+
+
+
+
 export const createTransaction = userData => dispatch => {
     return(
     APIUtil.createTransaction(userData).then((transaction) => {
@@ -33,11 +42,20 @@ export const createTransaction = userData => dispatch => {
 
 export const fetchTransactions = (userData)=>dispatch=>{
     return(
-        APIUtil.fetchTransaction(userData).then((transactions)=>{
+        APIUtil.fetchTransactions   (userData).then((transactions)=>{
             dispatch(receiveAllTransactions(transactions.data))
         })
     )
 }
+
+export const fetchTransactionsFiltered = (filterDate)=>dispatch=>{
+    return(
+        APIUtil.fetchTransactionsFiltered(filterDate).then((transactions)=>{
+            dispatch(receiveAllTransactions(transactions.data))
+        })
+    )
+}
+
 
 export const deleteTransaction = (id)=>dispatch => {
     

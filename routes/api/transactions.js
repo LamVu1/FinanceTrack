@@ -11,11 +11,12 @@ router.get('/', (req, res)=>{
 })
 
 
-// router.get('/:id', (req, res)=> {
-//     Transaction.findById(req.params.id)
-//     .then( trans => res.json(trans))
-//     .catch(err=>res.status(400).json(err));
-// })
+router.get('/filter', (req, res)=> {
+
+    Transaction.find({user: req.query.id, date: {$lte: req.query.end_date, $gte: req.query.start_date} }).sort({date: -1})
+    .then( trans => res.json(trans))
+    .catch(err=>res.status(400).json(err));
+})
 
 
 router.get('/:id', (req, res)=> {

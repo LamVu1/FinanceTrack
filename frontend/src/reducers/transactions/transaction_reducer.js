@@ -1,6 +1,6 @@
 import { RECEIVE_ALL_TRANSACTIONS, 
     RECEIVE_TRANSACTION, 
-    REMOVE_TRANSACTION } from './transaction_actions';
+    REMOVE_TRANSACTION, RECEIVE_SEARCH_TRANSACTIONS } from './transaction_actions';
 
 const initialState = {
 };
@@ -10,10 +10,12 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case RECEIVE_ALL_TRANSACTIONS:
         
-        nextState = {...state};
-        action.transactions.forEach(transaction=>
-            nextState[transaction._id] = transaction
-        )
+        // nextState = {...state};
+        // action.transactions.forEach(transaction=>
+        //     nextState[transaction._id] = transaction
+        // )
+
+        nextState = {...action.transactions}
         return nextState;
     case RECEIVE_TRANSACTION:
 
@@ -28,7 +30,12 @@ export default function(state = initialState, action) {
         nextState = Object.assign({}, state);        
         let newState = Object.assign({},Object.values(nextState).filter(t=>t._id !== action.transaction._id))
         return newState;
+    case  RECEIVE_SEARCH_TRANSACTIONS:
+        nextState = Object.assign({}, state);  
+        let searchState = Object.assign({},Object.values(nextState).filter(t=>t.text.toLowerCase().includes(action.search.toLowerCase())))
+        return searchState;
     default:
       return state;
   }
 }
+

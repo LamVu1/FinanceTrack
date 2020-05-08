@@ -132,7 +132,9 @@
 }
 
 .selected{
-    background-color:rgb(137, 108, 204);;
+    background-color:rgb(137, 108, 204);
+    
+     /* background-color: red; */
 }
 
 
