@@ -15,3 +15,28 @@
     width: 50%;
     
 }
+
+.form-div{
+    height: 60vh;
+    width: 30vw;
+    background-color: rgba(255, 255, 255, 0.637);
+    border-radius: 2pt;
+    /* margin: auto; */
+ 
+}
+
+.form-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #F5F5F5;
+    cursor: pointer;
+    height: 20%;
+}
+
+.form-btn:hover{
+    background-color: black;
+    color: white;
+
+}
