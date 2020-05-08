@@ -10,13 +10,13 @@ class TransactionForm extends React.Component{
         this.state = {
             item: '',
             amount: '',
-            date: ''
+            date: '',
+            toggle: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
         this.handleDate = this.handleDate.bind(this);
-        this.toggle = true;
     }
 
     handleUpdate(e){
@@ -36,11 +36,12 @@ class TransactionForm extends React.Component{
     handleSubmit(e){
        e.preventDefault();
        let newAmount = this.state.amount
-       if(!this.toggle){
+       if(!this.state.toggle){
          newAmount = newAmount*-1
        }
        const user = Object.assign({}, {...this.state});
        user.amount = newAmount
+       delete user.toggle;
         if(this.state.date===''){
             delete user.date
         }
@@ -50,20 +51,26 @@ class TransactionForm extends React.Component{
 
      handleToggle(e){
          
-        e.target.classList.add('selected')
+        // e.target.classList.add('selected')
         
-        if(e.target.innerText==='Income'){
-            let btn = document.getElementsByClassName('toggle-spending');
-            btn[0].classList.remove('selected');
-            e.target.classList.add('selected');
-            this.toggle= true;
+        if(e.target.classList.contains('selected')){
+            return
         }
-        if(e.target.innerText==='Spending'){
-            let btn = document.getElementsByClassName('toggle-income');
-            btn[0].classList.remove('selected');
-            e.target.classList.add('selected');
-            this.toggle= false;
-        }     
+        // if(e.target.innerText==='Income'){
+        //     let btn = document.getElementsByClassName('toggle-spending');
+        //     btn[0].classList.remove('selected');
+        //     e.target.classList.add('selected');
+        //     this.toggle= true;
+        // }
+        // if(e.target.innerText==='Spending'){
+        //     let btn = document.getElementsByClassName('toggle-income');
+        //     btn[0].classList.remove('selected');
+        //     e.target.classList.add('selected');
+            if(this.state.toggle){
+               this.setState({toggle: false})
+            }else{
+                this.setState({toggle: true})
+            }
      }
     
 
@@ -77,10 +84,10 @@ class TransactionForm extends React.Component{
 
                     <h1 className='transaction-form-header'>Add new transaction</h1>
                    <div className='form-toggle'>
-                        <button className='toggle-income selected' onClick={e =>this.handleToggle(e)}>
+                        <button className={`toggle-income ${this.state.toggle===true ?'selected' :''}` } onClick={(e)=>{this.handleToggle(e)}}>
                             Income
                         </button>
-                        <button className='toggle-spending' onClick={e=>this.handleToggle(e)}>
+                        <button className={`toggle-spending ${this.state.toggle===false ?'selected' :''}`} onClick={(e)=>{this.handleToggle(e)}}>
                             Spending
                         </button>
                    </div>

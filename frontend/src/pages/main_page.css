@@ -25,6 +25,11 @@
     margin-left: 50px;
 }
 
+.search-filter{
+    display: flex;
+    flex-direction: row;
+}
+
 
 body{
     font-family: 'Roboto', sans-serif;

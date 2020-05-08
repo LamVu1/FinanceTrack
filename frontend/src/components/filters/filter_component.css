@@ -1,0 +1,20 @@
+.filter-container{
+    /* border: red solid;*/
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+
+.filter-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.remove-filter-btn{
+    background-color: red;
+}
+
+.filter-btn:hover{
+background-color: rgb(93, 91, 91);
+}
