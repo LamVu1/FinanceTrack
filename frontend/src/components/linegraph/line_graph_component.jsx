@@ -39,6 +39,8 @@ export const LineGraph =()=>{
     var width = 700 - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
             
+        d3.selectAll("svg > *").remove();
+
         const svg = d3.select('svg')
                       .attr('width', width+margin.left+margin.right)
                       .attr('height', height+margin.top+margin.bottom);
@@ -78,7 +80,7 @@ export const LineGraph =()=>{
         //Title
         svg.append("g")
         .append("text")
-        .attr("y", 20)
+        .attr("y", 10)
         .attr("x", width/2)
         .attr("dy", ".71em")
         .style("font-size", "10px")
@@ -121,12 +123,13 @@ export const LineGraph =()=>{
             .attr("class", "grid")
             .attr("transform", "translate(0," + height + ")")
             .call(make_x_gridlines()
-            .tickSize(-height)
+            .tickSize(-height+20)
             .tickFormat("")
         )
 
         svg.append("g")			
             .attr("class", "grid")
+            .attr("transform", "translate("+60 + ",0)")
             .call(make_y_gridlines()
             .tickSize(-width)
             .tickFormat("")

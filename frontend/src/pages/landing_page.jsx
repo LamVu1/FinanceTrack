@@ -1,7 +1,6 @@
 import React from 'react';
 import SignIn from '../components/signin/sign_in_component';
 import SignUp from '../components/signup/sign_up_component';
-import '../components/signinup.css'
 import './landing_page.css'
 
 class LandingPage extends React.Component {

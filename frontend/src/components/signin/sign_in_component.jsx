@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { login } from '../../reducers/session/session_actions';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import './sign_in_component.css'
 
 
 class SignIn extends React.Component {
@@ -84,13 +84,11 @@ class SignIn extends React.Component {
                 onChange={this.update('username')}
                 placeholder="Username"
               />
-            <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
-            <br/>
           <button className='login-in-btn' onClick={this.handleSubmit} >Submit</button>
           <button className='demo-login' onClick={this.handleDemo}>Demo Log In</button>
             {this.renderErrors()}

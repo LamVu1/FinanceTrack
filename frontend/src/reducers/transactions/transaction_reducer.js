@@ -20,6 +20,9 @@ export default function(state = initialState, action) {
         nextState = {...state}
         
         nextState[action.transaction._id] = action.transaction
+        
+        nextState = Object.values(nextState).sort((a,b)=>new Date(b.date)-new Date(a.date))
+
         return nextState;
     case REMOVE_TRANSACTION:
         nextState = Object.assign({}, state);        
