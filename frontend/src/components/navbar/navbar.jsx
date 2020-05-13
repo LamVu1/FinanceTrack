@@ -34,7 +34,10 @@ class NavBar extends React.Component {
   render() {
       return (
         <div className='nav-bar'>
+          <div className='logo-container'>
+          <img className='nav-logo' src="img.png" alt=""/>
             <h1>FinanceTracks</h1>
+          </div>
             { this.getLinks() }
         </div>
       );

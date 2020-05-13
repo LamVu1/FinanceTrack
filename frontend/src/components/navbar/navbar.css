@@ -9,7 +9,20 @@
     background-color: rgb(37, 9, 101);;
     
 }
+.nav-logo{
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    margin-top: -5px;
+    align-items: center;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 20px;
 
+}
 
 .logout-btn{
     width: 100px;

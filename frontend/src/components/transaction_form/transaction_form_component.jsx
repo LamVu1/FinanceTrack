@@ -88,7 +88,7 @@ class TransactionForm extends React.Component{
                             Income
                         </button>
                         <button className={`toggle-spending ${this.state.toggle===false ?'selected' :''}`} onClick={(e)=>{this.handleToggle(e)}}>
-                            Spending
+                            Expense
                         </button>
                    </div>
                     <div className='form-item'>

@@ -10,6 +10,7 @@ import {LineGraph} from '../components/linegraph/line_graph_component';
 // import {BarGraph} from '../components/bargraph/bar_graph_component';
 import Filters from '../components/filters/filter_component';
 import SearchBox from '../components/search/search_component';
+import LinkNav from '../components/linknav/linknav_component';
 
 import './main_page.css'
 class MainPage extends React.Component {
@@ -71,11 +72,14 @@ class MainPage extends React.Component {
 
     return (
       <div className='main-page-container'>
+
+<LinkNav/>
         <div className="left-container">
           <Balance  income={income} expense={expense}/>
           <IncomeExpense income={income} expense={expense}/>
           <div className='search-filter'>
     <SearchBox />
+
          
           <Filters />
           </div>

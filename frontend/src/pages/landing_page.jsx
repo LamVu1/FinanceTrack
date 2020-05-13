@@ -18,13 +18,13 @@ class LandingPage extends React.Component {
     if(this.flag){
         signin[0].style.display = "none";
         signup[0].style.display = "flex";
-        btn[0].innerHTML = "Have an account already? Sign In"
+        btn[0].innerHTML = "Already have an account? Sign In"
         this.flag = false;
     }
     else{
         signin[0].style.display = "flex";
         signup[0].style.display = "none";
-        btn[0].innerHTML = " New to myshop? Sign Up"
+        btn[0].innerHTML = " Don't have an account? Sign Up"
         this.flag = true;
 
     }
@@ -35,7 +35,7 @@ class LandingPage extends React.Component {
     let btn;
         
     btn =  <div className="form-btn" onClick={this.handleButton}>
-    New to myshop? Sign Up
+    Don't have an account? Sign Up
 </div>
 
     return (
