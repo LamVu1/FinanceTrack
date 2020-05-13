@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import {createTransaction, fetchTransactions, deleteTransaction} from '../reducers/transactions/transaction_actions';
@@ -13,108 +13,177 @@ import SearchBox from '../components/search/search_component';
 import LinkNav from '../components/linknav/linknav_component';
 
 import './main_page.css'
-class MainPage extends React.Component {
-  constructor(){
-    super();   
-    this.state = {
-      search: ''
-    }
-    this.handleRemove = this.handleRemove.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
+// class MainPage extends React.Component {
+//   constructor(){
+//     super();   
+//     this.state = {
+//       search: ''
+//     }
+//     this.handleRemove = this.handleRemove.bind(this);
+//     this.handleSearch = this.handleSearch.bind(this);
 
 
-  }
+//   }
 
-  componentDidMount(){
-    this.props.fetchTransactions(this.props.currentUser)
-  }
+//   componentDidMount(){
+//     this.props.fetchTransactions(this.props.currentUser)
+//   }
 
-  handleRemove(id){
-    this.props.deleteTransaction(id)
-  }
+//   handleRemove(id){
+//     this.props.deleteTransaction(id)
+//   }
 
-  handleSearch(e){
-    e.preventDefault();
-    this.setState({search: e.target.value}) 
-}
+//   handleSearch(e){
+//     e.preventDefault();
+//     this.setState({search: e.target.value}) 
+// }
 
 
 
-  render() {
+//   render() {
     
-    const {transactions} = this.props;
+//     const {transactions} = this.props;
 
 
 
-    // let transactions = this.props.transactions.filter((ele)=> ele.text.toLowerCase().includes(this.state.search.toLowerCase()))
+//     // let transactions = this.props.transactions.filter((ele)=> ele.text.toLowerCase().includes(this.state.search.toLowerCase()))
 
-    let income = 0;
-    let expense = 0;
+//     let income = 0;
+//     let expense = 0;
 
-    let trans = transactions.map(transaction =>{
-      if(transaction.amount >0){
-        income+=transaction.amount
-      }
-      else if(transaction.amount < 0){
-        expense+=transaction.amount
-      }
-      return(
-        <Transaction transaction={transaction} remove={this.handleRemove}/>
-      )
-    })
-//     <div className='search-div'>
-//     <form className='search-form'>
-//         <input onChange={this.handleSearch} type="text" name="" value={this.state.search} placeholder='Search'/>
+//     let trans = transactions.map(transaction =>{
+//       if(transaction.amount >0){
+//         income+=transaction.amount
+//       }
+//       else if(transaction.amount < 0){
+//         expense+=transaction.amount
+//       }
+//       return(
+//         <Transaction transaction={transaction} remove={this.handleRemove}/>
+//       )
+//     })
+// //     <div className='search-div'>
+// //     <form className='search-form'>
+// //         <input onChange={this.handleSearch} type="text" name="" value={this.state.search} placeholder='Search'/>
       
-//     </form>
-// </div>
+// //     </form>
+// // </div>
     
 
-    return (
-      <div className='main-page-container'>
+//     return (
+//       <div className='main-page-container'>
 
-<LinkNav/>
-        <div className="left-container">
-          <Balance  income={income} expense={expense}/>
-          <IncomeExpense income={income} expense={expense}/>
-          <div className='search-filter'>
-    <SearchBox />
+// <LinkNav/>
+//         <div className="left-container">
+//           <Balance  income={income} expense={expense}/>
+//           <IncomeExpense income={income} expense={expense}/>
+//           <div className='search-filter'>
+//     <SearchBox />
 
          
-          <Filters />
+//           <Filters />
+//           </div>
+//         <div className='transactions-container'>
+//           {
+//             trans
+//           }
+//         </div>
+//         <TransactionForm />
+
+
+//         </div>
+//         <div className='right-container'>
+//         <LineGraph />
+//         </div>
+
+//       </div>
+//     );
+//   }
+// }
+
+const MainPage =({currentUser,transactions, createTransaction, fetchTransactions, deleteTransaction})=>{
+  
+  useEffect(()=>{
+    fetchTransactions(currentUser)
+  },[])
+
+
+  const handleRemove = (id)=>{
+    deleteTransaction(id)
+  }
+
+  let income = 0;
+  let expense = 0;
+
+  let trans = transactions.map((transaction,idx) =>{
+    if(transaction.amount >0){
+      income+=transaction.amount
+    }
+    else if(transaction.amount < 0){
+      expense+=transaction.amount
+    }
+    return(
+      <Transaction transaction={transaction} key={idx} remove={handleRemove}/>
+    )
+  })
+
+  return (
+    <div className='main-page-container'>
+
+      <LinkNav/>
+
+      <div className="left-container">
+          
+          <Balance  income={income} expense={expense}/>
+          <IncomeExpense income={income} expense={expense}/>
+          
+          <div className='search-filter'>
+            <SearchBox />
+            <Filters />
           </div>
-        <div className='transactions-container'>
-          {
-            trans
-          }
-        </div>
-        <TransactionForm />
 
+          <div className='transactions-container'>
+            {
+              trans
+            }
+          </div>
 
-        </div>
-        <div className='right-container'>
-        <LineGraph />
-        </div>
+          <TransactionForm />
 
       </div>
-    );
-  }
+
+      <div className='right-container'>
+      
+        <LineGraph />
+
+      </div>
+
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
+
     return {
-      currentUser: state.session.user.id,
-      transactions: Object.values(state.transactions)
+
+        currentUser: state.session.user.id,
+        transactions: Object.values(state.transactions)
+        
     };
+
   };
   
 
   const mapDispatchToProps = (dispatch) => {
+
     return {
+
         createTransaction: (data)=>dispatch(createTransaction(data)),
         fetchTransactions: (id)=>dispatch(fetchTransactions(id)),
         deleteTransaction: (id)=>dispatch(deleteTransaction(id))
+
     };
+
   };
   
  

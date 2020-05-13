@@ -1,49 +1,80 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import './search_component.css';
 
 import {receiveSearchTransactions, fetchTransactions} from '../../reducers/transactions/transaction_actions';
 
-class SearchBox extends React.Component{
-    constructor(){
-        super()
-        this.state={
-            search:''
-        }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.clearSearch = this.clearSearch.bind(this);
+// class SearchBox extends React.Component{
+//     constructor(){
+//         super()
+//         this.state={
+//             search:''
+//         }
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//         this.clearSearch = this.clearSearch.bind(this);
 
 
+//     }
+
+//     handleChange(e){
+//         this.setState({search: e.target.value})
+//     }
+
+//     handleSubmit(e){
+//         e.preventDefault()
+//         this.props.receiveSearchTransactions(this.state.search)
+//     }
+
+//     clearSearch(){
+//         this.setState({search: ''})
+//         this.props.fetchTransactions(this.props.currentUser)
+//     }
+
+//     render(){
+//         let search = this.state.search
+//         return(
+//             <div className='search-container'>
+//                 <form className='search-form'>
+//                     <input type="text" placeholder='Search' value={search} onChange={this.handleChange}/>
+//                     <button className='filter-btn' onClick={this.handleSubmit}>Filter</button>
+//                     <button className='remove-filter-btn' onClick={this.clearSearch}>X</button>
+//                 </form>
+//             </div>
+//         )
+//     }
+// }
+
+const SearchBox = ({currentUser, receiveSearchTransactions,fetchTransactions})=>{
+    let [search, setSearch] = useState('');
+
+
+    const handleChange =(e)=>{
+        setSearch(e.target.value)
     }
 
-    handleChange(e){
-        this.setState({search: e.target.value})
-    }
-
-    handleSubmit(e){
+    const handleSubmit=(e)=>{
         e.preventDefault()
-        this.props.receiveSearchTransactions(this.state.search)
+        receiveSearchTransactions(search)
     }
 
-    clearSearch(){
-        this.setState({search: ''})
-        this.props.fetchTransactions(this.props.currentUser)
+    const clearSearch =()=>{
+        setSearch('')
+        fetchTransactions(currentUser)
     }
 
-    render(){
-        let search = this.state.search
-        return(
+
+    return(
             <div className='search-container'>
                 <form className='search-form'>
-                    <input type="text" placeholder='Search' value={search} onChange={this.handleChange}/>
-                    <button className='filter-btn' onClick={this.handleSubmit}>Filter</button>
-                    <button className='remove-filter-btn' onClick={this.clearSearch}>X</button>
+                    <input type="text" placeholder='Search' value={search} onChange={handleChange}/>
+                    <button className='filter-btn' onClick={handleSubmit}>Filter</button>
+                    <button className='remove-filter-btn' onClick={clearSearch}>X</button>
                 </form>
             </div>
         )
-    }
 }
+
 
 const mapStateToProps = (state) => {
   
