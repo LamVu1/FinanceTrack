@@ -104,21 +104,34 @@ const Filters = ({currentUser, fetchTransactionsFiltered, fetchTransactions})=>{
 
   return(
     <div className='filter-container'>
-    <form className='filter-form'>                
-        <label>
-          From:
-          <input type="date" name="start_date" value={start_date} onChange={handleDate}/>
-        </label>
+      <form className='filter-form'>  
         
-        <label>
-          To:
-          <input type="date" name="end_date" value={end_date} onChange={handleDate}/>
-        </label>
-      
-        <button className='filter-btn' onClick={filter}>Filter</button>
-        <button className='remove-filter-btn' onClick={removefilter}>X</button>
-    
-    </form>
+        <div className='filter-form-container'>
+          <div className='filter-form-div'>
+
+              <div>
+              <label className='filter-label'>
+              From
+              </label>
+              <input className='filter-input' type="date" name="start_date" value={start_date} onChange={handleDate}/>
+              </div>   
+
+              <div>
+                <label className='filter-label'>
+                To
+                </label>
+                <input className='filter-input' type="date" name="end_date" value={end_date} onChange={handleDate}/>
+                </div> 
+                
+          </div>
+        </div>
+
+        <div className='filter-btn-container'>
+          <button className='filter-btn' onClick={filter}>Filter</button>
+          <button className='remove-filter-btn' onClick={removefilter}>X</button>
+        </div>
+
+      </form>
 </div>
   )
 }

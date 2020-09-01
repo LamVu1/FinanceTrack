@@ -2,6 +2,10 @@
     background-color: white;
     height: 100%;
     width: 100%;
+    display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
     /* box-shadow: 5px 5px 1px 1px #d0cfcf; */
 
 }
@@ -24,12 +28,18 @@
 }
 
 .line-graph-container{
-    width: 700px;
-    height: 600px;
+    /* width: 700px;
+    height: 600px; */
     display: flex;
     flex-direction: column;
-    border: #d0cfcf solid;
-        box-shadow: 5px 5px 1px 1px #d0cfcf;
+    border: rgb(234, 233, 233) solid thin;
+    box-shadow: 5px 5px 14px 5px #d0cfcf;
+    display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%; 
+	vertical-align: middle; 
+	overflow: hidden; 
 
     
 }

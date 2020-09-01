@@ -1,9 +1,22 @@
 .search-container{
-    width: 30%;
+    width: 100%;
     margin-bottom: 10px;
 
 }
 
 .search-form{
     display: flex;
+}
+
+.search-form-container{
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.search-input{
+    width: 90%;
+    font: normal 16px sans-serif;
+    padding: 5px;
 }

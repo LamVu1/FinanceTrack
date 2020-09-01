@@ -138,8 +138,8 @@ const MainPage =({currentUser,transactions, createTransaction, fetchTransactions
           <IncomeExpense income={income} expense={expense}/>
           
           <div className='search-filter'>
-            <SearchBox />
             <Filters />
+            <SearchBox />
           </div>
 
           <div className='transactions-container'>

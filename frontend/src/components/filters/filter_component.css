@@ -1,6 +1,6 @@
 .filter-container{
     /* border: red solid;*/
-    width: 70%;
+    width: 100%;
     margin-bottom: 10px;
 }
 
@@ -8,13 +8,91 @@
 .filter-form{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-around;
+}
+.filter-form-container{
+    width: 80%;
+    /* margin-right: 25px; */
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.filter-form-div{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.filter-label{
+    font: normal 18px sans-serif;
+    font-weight: bolder;
+    color: rgb(133, 133, 134);
+    margin-right: 7px;
+
+}
+
+.filter-btn-container{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.filter-input{
+    /* width: 100%; */
+    font: normal 16px sans-serif;
+    text-align: center;
+
+    padding: 5px;
+    color: rgb(133, 133, 134);
+
 }
 
 .remove-filter-btn{
+    /* background-color: red; */
+    width: 25%;
+    /* border-radius: 3pt; */
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 18px sans-serif;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 12px;
+    margin: 0px;
+    color: white;
+    background-color: rgb(226, 61, 61);
+    /* border: rgba(146, 145, 145, 0.479) solid; */
+    cursor: pointer;
+    text-align: center;
+}
+.remove-filter-btn:hover{
     background-color: red;
+
+}
+
+.filter-btn{
+    /* border-radius: 3pt; */
+    width: 70%;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 18px sans-serif;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 12px;
+    margin: 0px;
+    color: white;
+    background-color: #00c4cc;
+    /* border: rgba(146, 145, 145, 0.479) solid; */
+    cursor: pointer;
+    text-align: center;
 }
 
 .filter-btn:hover{
-background-color: rgb(93, 91, 91);
+/* background-color: rgb(93, 91, 91); */
+background-color: #0be1e9;
 }
+
+

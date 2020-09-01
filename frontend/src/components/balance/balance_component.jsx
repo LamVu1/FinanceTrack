@@ -10,9 +10,12 @@ export const Balance = ({income, expense})=>{
     return(
         <div className='balance-container'>
             <div>
-            YOUR BALANCE    
+            BALANCE    
             </div>
+            <div>
     ${sign}{balance.toFixed(2)}
+
+            </div>
         </div>
     )
 }

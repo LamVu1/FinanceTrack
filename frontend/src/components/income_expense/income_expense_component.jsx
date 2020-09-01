@@ -8,13 +8,13 @@ export const IncomeExpense = ({income,expense})=>{
         <div className='income-expense-container'>
                         
             <div className='income-container'>
-                <p className="income-expense-header">INCOME</p>
-                <p className="income-amt">${income.toFixed(2)}</p>
+                <div className="income-expense-header">INCOME</div>
+                <div className="income-amt">${income.toFixed(2)}</div>
             </div>
 
             <div className='expense-container'>
-                <p className="income-expense-header">EXPENSE</p>
-                <p className="expense-amt">${Math.abs(expense).toFixed(2)}</p>
+                <div className="income-expense-header">EXPENSE</div>
+                <div className="expense-amt">${Math.abs(expense).toFixed(2)}</div>
             </div>
         </div>
     )

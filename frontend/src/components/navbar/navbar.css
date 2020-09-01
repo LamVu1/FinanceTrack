@@ -5,10 +5,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    color: white;
-    background-color: rgb(37, 9, 101);;
-    
-}
+    color: black;
+    /* background-color: rgb(37, 9, 101); */
+    background-color: white;
+    border-bottom: rgb(216, 216, 216) solid thin;
+  }
 .nav-logo{
     height: 40px;
     width: 40px;
@@ -26,23 +27,24 @@
 
 .logout-btn{
     width: 100px;
-    border-radius: 4pt;
+    border-radius: 3pt;
     display: block;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    font: normal 16px "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: normal 18px sans-serif;
+    font-weight: bolder;
     border: none;
     padding: 10px 12px;
     margin: 0px;
     color: white;
-    background-color: black;
-    border: rgba(255, 255, 255, 0.479) solid;
+    background-color: #00c4cc;
+    /* border: rgba(146, 145, 145, 0.479) solid; */
     cursor: pointer;
     text-align: center;
 }
 
 .logout-btn:hover{
-    background-color: rgb(93, 93, 93);
+    background-color: #0be1e9;
 }
 
 

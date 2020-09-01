@@ -67,9 +67,15 @@ const SearchBox = ({currentUser, receiveSearchTransactions,fetchTransactions})=>
     return(
             <div className='search-container'>
                 <form className='search-form'>
-                    <input type="text" placeholder='Search' value={search} onChange={handleChange}/>
+                    <div className='search-form-container'>
+                    <input className='search-input' type="text" placeholder='Search' value={search} onChange={handleChange}/>
+                    </div>
+                    <div className='filter-btn-container'>
+
                     <button className='filter-btn' onClick={handleSubmit}>Filter</button>
                     <button className='remove-filter-btn' onClick={clearSearch}>X</button>
+                    </div>
+
                 </form>
             </div>
         )

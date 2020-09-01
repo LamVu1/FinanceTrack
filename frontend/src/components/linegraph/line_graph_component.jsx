@@ -43,7 +43,9 @@ export const LineGraph =()=>{
 
         const svg = d3.select('svg')
                       .attr('width', width+margin.left+margin.right)
-                      .attr('height', height+margin.top+margin.bottom);
+                      .attr('height', height+margin.top+margin.bottom)
+                      .attr("viewBox", `0 0 ${height+margin.top+margin.bottom} ${width+margin.left+margin.right}`)
+
 
         svg.append('g')
            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -194,7 +196,7 @@ export const LineGraph =()=>{
       return (
         <React.Fragment>
             <div className='line-graph-container'>
-                <svg   className="graph" />
+                <svg   className="graph"/>
             </div>
         </React.Fragment>
       )
